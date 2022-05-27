@@ -1,0 +1,12 @@
+{% extends "admin/base.html" %}
+{% block content %}
+  <form method="post" enctype="multipart/form-data" style="max-width:400px;">
+    {% csrf_token %}
+    {{form}}
+    <div class="field">
+      <p class="control">
+        <button type="submit" class="button is-primary">保存</button>
+      </p>
+    </div>
+  </form>
+{% endblock %}
