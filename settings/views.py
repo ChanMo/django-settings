@@ -15,17 +15,17 @@ def settings_view(request):
         }
     )
     if request.method == 'POST':
-        form = SettingForm(request.POST, instance=obj)
+        form = SettingForm(request.POST, request.FILES, instance=obj)
         if form.is_valid():
             form.save()
-            messages.success(request, '保存成功')
+            messages.success(request, 'changed successfully.')
             return redirect(request.path)
     else:
         form = SettingForm(instance=obj)
 
     context = admin.site.each_context(request)
     context.update({
-        'title': '站点设置',
+        'title': 'Base Info',
         'form':form
     })
     return render(request, 'settings/setting_form.html', context)
